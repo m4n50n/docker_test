@@ -1,4 +1,4 @@
-# Imagen principal que usará el contenedor
+# Imagen que usará el contenedor
 FROM node:latest
 
 # Carpeta donde se ubicará el código fuente de la aplicación
