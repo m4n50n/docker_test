@@ -1,0 +1,17 @@
+# Este fichero contendrá las mismas instrucciones que el Dockerfile original, pero lo usaremos en caso de que queramos tener el otro contenedor para producción y este para desarrollo
+FROM node:18
+
+# https://www.npmjs.com/package/nodemon
+# nodemon es una herramienta que ayuda a desarrollar en Node.js al reiniciar automáticamente la aplicación cuando se detecten cambios en los archivos del directorio
+RUN npm i -g nodemon  
+RUN mkdir -p /home/app
+
+# WORKDIR establece la ruta de trabajo
+WORKDIR /home/app 
+
+COPY . /home/app
+
+EXPOSE 3000
+
+# Como hemos establecido /home/app como ruta de trabajo, ya no necesitaremos especificar dicha ruta en el siguiente comando
+CMD ["nodemon", "index.js"]

@@ -1,5 +1,24 @@
-# Docker Compose version
-version: "3.9"
+version: "3.9" # Docker Compose version
 
-services:
-  
+services:    
+  app:
+    container_name: miappDocker # Nombre del contenedor
+    build: . # Ruta del fichero docker-compose.yml. En este caso usará Dockerfile
+    ports: # Lista de puertos a mapear
+      - 3000:3000
+    links: # Mapeo de contenedores que este servicio (contenedor) utilizará (es decir, el contenedor de la app - miappDocker usará el servidor mongodb -)
+      - database
+      
+  database:
+    container_name: mongodb # Nombre del contenedor
+    image: mongo # En este caso se usará una imagen directamente
+    ports: 
+      - 27027:27017
+    environment: # Variables de entorno asignados al contenedor
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass    
+    volumes: # Volúmenes definidos que usará este servicio
+      - mongo-data:/data/db # Mapeo de carpetas. Por defecto, mongodb guarda sus datos en /data/db, por lo que indicamos que el volumen mongo-data estará mapeado en la carpeta /data/db y por lo tanto la base de datos de mongo estará guardada en este volumen y no dentro del contenedor
+      
+volumes: # Definición de volúmenes que se crearán. Esto evitará que la información se pierda en caso de reconstruir los contenedores ejecutando de nuevo, por ejemplo, docker compose up
+  mongo-data: # Nombre que se asignará a este volumen

@@ -36,12 +36,22 @@
 |`docker network ls`|Lista todas las redes creadas.|
 |`docker network create NOMBRE_RED`|Crear una nueva red.|
 
-### ◼ Comandos usados:
-**Resolución ejercicio** ❗❗: 
+#### ▪ <u>docker-compose</u> 
+
+|Comando|Notas|
+|:----------|:-----------|
+|`docker compose up`|Ejecutar docker compose.|
+|`docker compose down`|Eliminar contenedores, imágenes y networks creadas con docker compose.|
+|`docker compose -f docker-compose-dev.yml up`|El parámetro **-f** se usa para indicar un fichero *docker-compose* con distinto nombre.|
+
+### ❗❗ Resolución del ejercicio con <u>comandos</u>:
 `docker network create red_mongo` // Crear red
 `docker run -d -p 27017:27017 --name mongodb --network red_mongo -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=pass mongo` // Crear contenedor mongo
 `docker build -t miapp:1 .` // Crear imagen de la aplicación (raíz del proyecto, donde se ubique el fichero *Dockerfile*)
 `docker run -d -p 3000:3000 --name miappDocker --network red_mongo miapp:1` // Crear contenedor con la aplicación construida anteriormente
+
+### ❗❗ Resolución del ejercicio con <u>***docker-compose.yml***</u>:
+`docker compose up` // Construir contenedor con compose (desde el fichero ***docker-compose-yml***)
 
 Después de esto, en el navegador:
 1. http://localhost:3000/ // Endpoint **/** del fichero *index.js*

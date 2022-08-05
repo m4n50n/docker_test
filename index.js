@@ -1,6 +1,8 @@
 import express from "express"
 import mongoose from "mongoose"
 
+console.log("Iniciando app...");
+
 const Animal = mongoose.model("Animal", new mongoose.Schema({
   tipo: String,
   color: String,

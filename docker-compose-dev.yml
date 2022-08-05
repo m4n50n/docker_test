@@ -1,0 +1,29 @@
+# Este fichero contendrá las mismas instrucciones que el docker-compose-yml, pero usará el Docker file para desarrollo
+version: "3.9"
+
+services:    
+  app:
+    container_name: miappDocker
+    build: 
+      context: . # Indica el contexto donde se encuentran los ficheros que se usarán para crear el contenedor
+      dockerfile: Dockerfile.dev
+    ports: 
+      - 3000:3000
+    links: 
+      - database
+    volumes:
+      - .:/home/app # La ruta actual se mapeará en /home/app
+      
+  database:
+    container_name: mongodb 
+    image: mongo 
+    ports: 
+      - 27027:27017
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass    
+    volumes: 
+      - mongo-data:/data/db 
+      
+volumes: 
+  mongo-data: 
