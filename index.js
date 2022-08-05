@@ -8,9 +8,12 @@ const Animal = mongoose.model("Animal", new mongoose.Schema({
 
 const app = express();
 
-// Conexión al contenedor mongodb (debe estar en la misma red que el contenedor creado a partir de la imagen creada a partir de esta aplicación)
-const user = "jose";
-const password = "12345";
+/**
+ * Conexión al contenedor mongodb
+ * Debe estar en la misma red que el contenedor creado a partir de la imagen creada a partir de esta aplicación
+ */
+const user = "user";
+const password = "pass";
 const port = "27017";
 const mongoContainerName = "mongodb";
 
