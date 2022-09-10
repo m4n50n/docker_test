@@ -1,4 +1,4 @@
-# App de pruebas Docker 🐳
+# App de pruebas con Docker 🐳
 
 ### ◼ Comandos usados:
 
