@@ -41,7 +41,7 @@
 |Comando|Notas|
 |:----------|:-----------|
 |`docker compose up`|Ejecutar docker compose.|
-|`docker compose pull`|Actualizar todas las imágenes. `docker compose pull plex` para actualizar una sola (en este ejemplo, plex)|
+|`docker compose pull`|Actualizar todas las imágenes. `docker compose pull plex` para actualizar una sola (en este ejemplo, la imagen llamada *plex*)|
 |`docker compose down`|Eliminar contenedores, imágenes y networks creadas con docker compose.|
 |`docker compose -f docker-compose-dev.yml up`|El parámetro **-f** se usa para indicar un fichero *docker-compose* con distinto nombre.|
 
